@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-50: 240, 249, 255;
+    --primary-100: 224, 242, 254;
+    --primary-200: 186, 230, 253;
+    --primary-300: 125, 211, 252;
+    --primary-400: 56, 189, 248;
+    --primary-500: 14, 165, 233;
+    --primary-600: 2, 132, 199;
+    --primary-700: 3, 105, 161;
+    --primary-800: 7, 89, 133;
+    --primary-900: 12, 74, 110;
+    
+    --secondary-50: 247, 254, 231;
+    --secondary-100: 236, 252, 203;
+    --secondary-200: 217, 249, 157;
+    --secondary-300: 190, 242, 100;
+    --secondary-400: 163, 230, 53;
+    --secondary-500: 132, 204, 22;
+    --secondary-600: 101, 163, 13;
+    --secondary-700: 77, 124, 15;
+    --secondary-800: 63, 98, 18;
+    --secondary-900: 54, 83, 20;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  }
+  
+  .dark body {
+    @apply bg-gray-900 text-gray-50;
+  }
+}
+
+@layer components {
+  .radial-progress {
+    @apply relative w-24 h-24 rounded-full flex items-center justify-center;
+    background: conic-gradient(theme('colors.primary.500') var(--progress), theme('colors.gray.700') 0%);
+  }
+  
+  .radial-progress::before {
+    content: "";
+    @apply absolute w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full bg-gray-800;
+  }
+  
+  .radial-value {
+    @apply relative z-[2];
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.4s ease forwards;
+  }
+  
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-slideDown {
+    animation: slideDown 0.3s ease-in-out;
+  }
+}
